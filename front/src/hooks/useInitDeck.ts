@@ -23,15 +23,22 @@ export const useInitDeck = (gridSize: number) => {
         } else {
           cardValue = `${i}${suit}`;
         }
-        deck.push({ value: cardValue, isVisible: false ,position : {col : , row}});
+        deck.push({
+          value: cardValue,
+          isVisible: false,
+        });
       }
     });
 
     const shuffledDeck = shuffle(deck);
 
     const grid: CardType[][] = [];
-    for (let i = 0; i < gridSize; i++) {
-      grid.push(shuffledDeck.slice(i * gridSize, (i + 1) * gridSize));
+    for (let row = 0; row < gridSize; row++) {
+      const rowCards = shuffledDeck.slice(row * gridSize, (row + 1) * gridSize);
+      rowCards.forEach((card, col) => {
+        card.position = { row, col };
+      });
+      grid.push(rowCards);
     }
 
     if (gridSize >= 2) {

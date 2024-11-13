@@ -35,11 +35,6 @@ export const handleChoice = (
   if (isCardPlayable(grid, card, position)) {
     grid[position.row][position.col].isVisible = true;
   }
-  // Logique pour traiter le choix
-  //console.log(isCardPlayable(grid, card, position));
-
-  // Ajoutez ici la logique en fonction du choix
-  // Par exemple, pour changer l'état de la carte ou mettre à jour la grille
 };
 
 const isCardPlayable = (
